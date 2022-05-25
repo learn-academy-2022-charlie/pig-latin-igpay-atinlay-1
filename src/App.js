@@ -22,18 +22,56 @@ class App extends Component{
     // no need to change this variable
     let userInput = this.state.phrase.split(" ")
     console.log("userInput:", userInput)
-
+    let regex = /[aeiou]/gi
     // now that we have an array of words, we can map over the array and access each word
     let translatedWordsArray = userInput.map(currentWord => {
       // ACTION ITEM: use "currentWord" as a starting point for your code
       console.log("currentWord:", currentWord)
 
-      let vowelsArray = currentWord.split("").filter(vowel => {
+      let vowelsArray = currentWord.split("").filter
+      (vowel => {
         return vowel === "a" || vowel === "e" || vowel === "i" || vowel === "o" || vowel === "u"
       })
       console.log("vowelsArray:", vowelsArray)
 
       // your code here!
+      //Solution for alpha
+      //If the first letter of a word is a vowel add way to the end
+
+      if (currentWord[0]=== "a"||
+         currentWord[0]=== "e" ||
+         currentWord[0]=== "i" ||
+         currentWord[0]=== "o" ||
+         currentWord[0]=== "u" 
+        
+        ){
+          return currentWord + "way"
+
+        } else if (regex.test(currentWord)) {
+      // Solution for through
+      // check to see if word contains a vowel
+      // iterate through string 
+      // check to see if current index is a vowel
+      // if a vowel split string from zero to current index minus one
+      // create a new variable to store a translated word by adding the second half of the split to the first and adding ay to the end
+      for(let i=0; i<currentWord.length; i++){
+        if (currentWord[i]=== "a"||
+        currentWord[i]=== "e" ||
+        currentWord[i]=== "i" ||
+        currentWord[i]=== "o" ||
+        currentWord[i]=== "u" ||
+        currentWord[i]=== "y"
+       
+       ){
+         var firstHalf = currentWord.slice(0, i)
+         var secondHalf = currentWord.slice (i)
+         var translatedWord = secondHalf + firstHalf + "ay"
+         return translatedWord
+       }
+      }
+        
+        
+        }
 
       // Remember: console.log is your friend :)
 
