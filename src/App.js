@@ -32,25 +32,40 @@ class App extends Component{
       (vowel => {
         return vowel === "a" || vowel === "e" || vowel === "i" || vowel === "o" || vowel === "u" || vowel === "y"
       })
-      console.log("vowelsArray:", vowelsArray) //["y"]
+      console.log("vowelsArray:", vowelsArray)
 
 
       // your code here!
 
+      // Solve for example "alpha"
+        // Check first index to see if string is a vowel
+        // If true, add "way" to the end of the string
       if (currentWord[0]=== "a"||
          currentWord[0]=== "e" ||
          currentWord[0]=== "i" ||
          currentWord[0]=== "o" ||
          currentWord[0]=== "u" ){
           return currentWord + "way"
-
         } else if (vowelsArray) {
+          // Solve for "queen"
+            // Check to see if first two letters of string are "qu"
+            // Create a variable to store "qu"
+            // Create a variable to store the rest of the string
+            // Create a variable to concatenate strings together in the correct order
+            // Return the translated word
           if(currentWord[0] === "q" && currentWord[1] === "u"){
             let firstHalf = currentWord.slice(0, 2)
             let secondHalf = currentWord.slice(2)
             let translatedWord = secondHalf + firstHalf + "ay"
             return translatedWord
           } else {
+            // Solving for word with consonants AND y: Solve for "through" and "fry"
+              // Iterate through the word until you find the first vowel
+              // Once first vowel is found
+                // Slice array from 0 to index, store this string
+                // Slice array from the index, store this string
+                // Create a variable to concatenate strings together in the correct order
+              // Return the translated word
             for(let i=0; i < currentWord.length; i++){
               if (currentWord[i] === "a"||
               currentWord[i]=== "e" ||
@@ -61,15 +76,12 @@ class App extends Component{
               ){
                let firstHalf = currentWord.slice(0, i)
                let secondHalf = currentWord.slice(i)
-               console.log("firstHalf: ", firstHalf)
-               console.log("secondHalf: ", secondHalf)
                let translatedWord = secondHalf + firstHalf + "ay"
                return translatedWord
-          }
-       }
-      }
-        
-        
+              }
+            }
+         }
+        return currentWord
         }
 
       // Remember: console.log is your friend :)
@@ -132,10 +144,10 @@ class App extends Component{
           />
           <br />
           {/* button that called the setUpPreventDefault method which calls the myPigLatinCodeHere method */}
-          <button onClick={this.setUpPreventDefault}>Submit</button>
-          <button onClick={this.restartGame}>Clear</button>
+          <button className="btn" onClick={this.setUpPreventDefault}>Submit</button>
+          <button className="btn" onClick={this.restartGame}>Clear</button>
         </div>
-        <p>{this.state.phraseTranslated}</p>
+        <p id="translated">{this.state.phraseTranslated}</p>
         <footer>Coded by ~Sean Alexander and Jenner Dulce~</footer>
       </>
     )

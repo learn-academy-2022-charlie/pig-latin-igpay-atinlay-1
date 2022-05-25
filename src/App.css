@@ -1,21 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Smooch&display=swap');
+
 body {
   margin: 1rem;
   font-family: 'Josefin Sans', sans-serif;
   text-align: center;
+  margin-bottom: 200px;
+}
+
+#translated {
+  font-size: 3rem;
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 7rem;
+  font-family: 'Smooch', cursive;
+  text-shadow: 2px 2px 8px #f11717;
+  background-color: rgb(255, 230, 0);
 }
 
 button {
   margin: 1rem;
   border-radius: 0.5rem;
   padding: 1rem;
+  cursor: pointer;
+  font-size: 24px;
+  color: #FFD700;
+  background-color: #800020;
 }
 
 footer {
+  font-size: 4rem;
   padding: 2rem;
+  font-family: 'Smooch', cursive;
 }
 
 .butcherPig {
