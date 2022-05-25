@@ -9,7 +9,7 @@ class App extends Component{
     this.state = {
       // "phrase" is the text entered by the user - right now there are test words hard coded to make the process of testing your code faster and easier
       // ACTION ITEM: when you are ready for your full user experience, delete the test words so phrase is assigned an empty string
-      phrase: "alpha through yummy squeal queen fry",
+      phrase: "",
       // "phraseTranslated" is what the user will see appear on the page as Pig Latin, it starts as the preset message and updates when your user clicks the "submit" button
       phraseTranslated: "This is where your translated sentence will appear."
     }
@@ -22,7 +22,7 @@ class App extends Component{
     // no need to change this variable
     let userInput = this.state.phrase.split(" ")
     console.log("userInput:", userInput)
-    let regex = /[aeiou]/gi
+
     // now that we have an array of words, we can map over the array and access each word
     let translatedWordsArray = userInput.map(currentWord => {
       // ACTION ITEM: use "currentWord" as a starting point for your code
@@ -30,43 +30,42 @@ class App extends Component{
 
       let vowelsArray = currentWord.split("").filter
       (vowel => {
-        return vowel === "a" || vowel === "e" || vowel === "i" || vowel === "o" || vowel === "u"
+        return vowel === "a" || vowel === "e" || vowel === "i" || vowel === "o" || vowel === "u" || vowel === "y"
       })
-      console.log("vowelsArray:", vowelsArray)
+      console.log("vowelsArray:", vowelsArray) //["y"]
+
 
       // your code here!
-      //Solution for alpha
-      //If the first letter of a word is a vowel add way to the end
 
       if (currentWord[0]=== "a"||
          currentWord[0]=== "e" ||
          currentWord[0]=== "i" ||
          currentWord[0]=== "o" ||
-         currentWord[0]=== "u" 
-        
-        ){
+         currentWord[0]=== "u" ){
           return currentWord + "way"
 
-        } else if (regex.test(currentWord)) {
-      // Solution for through
-      // check to see if word contains a vowel
-      // iterate through string 
-      // check to see if current index is a vowel
-      // if a vowel split string from zero to current index minus one
-      // create a new variable to store a translated word by adding the second half of the split to the first and adding ay to the end
-      for(let i=0; i<currentWord.length; i++){
-        if (currentWord[i]=== "a"||
-        currentWord[i]=== "e" ||
-        currentWord[i]=== "i" ||
-        currentWord[i]=== "o" ||
-        currentWord[i]=== "u" ||
-        currentWord[i]=== "y"
-       
-       ){
-         var firstHalf = currentWord.slice(0, i)
-         var secondHalf = currentWord.slice (i)
-         var translatedWord = secondHalf + firstHalf + "ay"
-         return translatedWord
+        } else if (vowelsArray) {
+          if(currentWord[0] === "q" && currentWord[1] === "u"){
+            let firstHalf = currentWord.slice(0, 2)
+            let secondHalf = currentWord.slice(2)
+            let translatedWord = secondHalf + firstHalf + "ay"
+            return translatedWord
+          } else {
+            for(let i=0; i < currentWord.length; i++){
+              if (currentWord[i] === "a"||
+              currentWord[i]=== "e" ||
+              currentWord[i]=== "i" ||
+              currentWord[i]=== "o" ||
+              currentWord[i]=== "u" ||
+              currentWord[i]=== "y"
+              ){
+               let firstHalf = currentWord.slice(0, i)
+               let secondHalf = currentWord.slice(i)
+               console.log("firstHalf: ", firstHalf)
+               console.log("secondHalf: ", secondHalf)
+               let translatedWord = secondHalf + firstHalf + "ay"
+               return translatedWord
+          }
        }
       }
         
@@ -137,7 +136,7 @@ class App extends Component{
           <button onClick={this.restartGame}>Clear</button>
         </div>
         <p>{this.state.phraseTranslated}</p>
-        <footer>Coded by ~your name here~</footer>
+        <footer>Coded by ~Sean Alexander and Jenner Dulce~</footer>
       </>
     )
   }
